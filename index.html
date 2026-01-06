@@ -1,720 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog | Your Site Name</title>
+
+  <!-- jQuery (use CDN - more reliable) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
   <style>
-    @font-face {
-      font-family: "Gilroy";
-      font-style: normal;
-      font-weight: 400;
-      src: url(/blogs/_nuxt/fonts/Gilroy-Regular.b91b012.ttf);
-      src: local("Gilroy"), local("Gilroy"), url(/blogs/_nuxt/fonts/Gilroy-Regular.b91b012.ttf) format("truetype");
-    }
-
-    @font-face {
-      font-family: "Gilroy";
-      font-style: normal;
-      font-weight: 800;
-      src: url(/blogs/_nuxt/fonts/Gilroy-ExtraBold.0ac6879.ttf);
-      src: local("Gilroy"), local("Gilroy"), url(/blogs/_nuxt/fonts/Gilroy-ExtraBold.0ac6879.ttf) format("truetype");
-    }
-
-    @font-face {
-      font-family: "Gilroy";
-      font-style: normal;
-      font-weight: 300;
-      src: url(/blogs/_nuxt/fonts/Gilroy-Light.1b7fff5.ttf);
-      src: local("Gilroy"), local("Gilroy"), url(/blogs/_nuxt/fonts/Gilroy-Light.1b7fff5.ttf) format("truetype");
-    }
-
-    @font-face {
-      font-family: "Gilroy";
-      font-style: italic;
-      font-weight: 600;
-      src: url(/blogs/_nuxt/fonts/Gilroy-SemiBoldItalic.3de62e3.ttf);
-      src: local("Gilroy"), local("Gilroy"), url(/blogs/_nuxt/fonts/Gilroy-SemiBoldItalic.3de62e3.ttf) format("truetype");
-    }
-
-    @font-face {
-      font-family: "Gilroy";
-      font-style: normal;
-      font-weight: 600;
-      src: url(/blogs/_nuxt/fonts/Gilroy-SemiBold.6780292.ttf);
-      src: local("Gilroy"), local("Gilroy"), url(/blogs/_nuxt/fonts/Gilroy-SemiBold.6780292.ttf) format("truetype");
-    }
-
-    @font-face {
-      font-family: "Gilroy";
-      font-style: italic;
-      font-weight: 500;
-      src: url(/blogs/_nuxt/fonts/Gilroy-MediumItalic.055223c.ttf);
-      src: local("Gilroy"), local("Gilroy"), url(/blogs/_nuxt/fonts/Gilroy-MediumItalic.055223c.ttf) format("truetype");
-    }
-
-    @font-face {
-      font-family: "Gilroy";
-      font-style: italic;
-      font-weight: 400;
-      src: url(/blogs/_nuxt/fonts/Gilroy-RegularItalic.8bbf15b.ttf);
-      src: local("Gilroy"), local("Gilroy"), url(/blogs/_nuxt/fonts/Gilroy-RegularItalic.8bbf15b.ttf) format("truetype");
-    }
-
-    @font-face {
-      font-family: "Gilroy";
-      font-style: normal;
-      font-weight: 500;
-      src: url(/blogs/_nuxt/fonts/Gilroy-Medium.f9f832b.ttf);
-      src: local("Gilroy"), local("Gilroy"), url(/blogs/_nuxt/fonts/Gilroy-Medium.f9f832b.ttf) format("truetype");
-    }
-
-    body {
-      line-height: 1.15;
-      background: linear-gradient(180deg, #4b4e55, #131313);
-      color: #fff;
-      font-family: "Gilroy", sans-serif;
-      font-size: 16px;
-      font-weight: 400;
-    }
-
-    * {
-      box-sizing: border-box;
-      line-height: 1;
-      margin: 0;
-      padding: 0;
-    }
-
-    * {
-      background-repeat: no-repeat;
-      box-sizing: inherit;
-    }
-
+    /* Reset & Base */
     * {
       margin: 0;
       padding: 0;
-    }
-
-    body {
-      margin: 0;
-    }
-
-    body {
-      background: linear-gradient(180deg, #4b4e55, #131313);
-      color: #fff;
-      font-family: "Gilroy", sans-serif;
-      font-size: 16px;
-      font-weight: 400;
-      height: 100%;
-      overflow: hidden;
-    }
-
-    html {
-      line-height: 1.15;
-      -webkit-text-size-adjust: 100%;
-    }
-
-    html {
       box-sizing: border-box;
-      overflow-y: scroll;
-      -webkit-text-size-adjust: 100%;
-      -moz-tab-size: 4;
-      -o-tab-size: 4;
-      tab-size: 4;
-      word-break: normal;
     }
 
     html {
       font-size: 16px;
       overflow-x: hidden;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     }
 
-    *,
-    :after,
-    :before,
-    h1 {
-      box-sizing: border-box;
-      line-height: 1;
-      margin: 0;
-      padding: 0;
-    }
-
-    *,
-    :after,
-    :before {
-      background-repeat: no-repeat;
-      box-sizing: inherit;
-    }
-
-    :after,
-    :before {
-      text-decoration: inherit;
-      vertical-align: inherit;
-    }
-
-    .breadcrumbs {
-      align-items: center;
-      display: flex;
-      font-family: Gilroy, sans-serif;
-      max-width: 1252px;
-      overflow: auto;
-      padding-bottom: 20px;
-    }
-
-    .blogs-view[data-v-4bbd7833] {
-      background-image: url(/img/blogs/bg.webp);
-      background-repeat: no-repeat;
-      background-size: 100% auto;
-    }
-
-    a {
-      background-color: transparent;
-    }
-
-    a {
-      color: #fff;
-      -webkit-text-decoration: none;
-      text-decoration: none;
-    }
-
-    .breadcrumbs a {
-      margin-right: 15px;
-      white-space: nowrap;
-    }
-
-    a:active,
-    a:hover {
-      outline-width: 0;
-    }
-
-    .breadcrumbs span {
-      white-space: nowrap;
-    }
-
-    .k-container {
-      margin: 0 auto;
-      max-width: 1252px;
-      position: relative;
-      width: 100%;
-    }
-
-    strong {
-      font-weight: bolder;
-    }
-
-    h1 {
-      font-size: 2em;
-      margin: .67em 0;
-    }
-
-    *,
-    h1 {
-      box-sizing: border-box;
-      line-height: 1;
-      margin: 0;
-      padding: 0;
-    }
-
-    h1 {
-      background: -webkit-linear-gradient(0deg, #fff 28.16%, #dde4ec 37.42%, #adc1d9 63.38%, #a6bcd6 76.36%, #5d87b9 87.16%);
-      -webkit-background-clip: text;
-      font-family: Gilroy, sans-serif;
-      font-size: 40px;
-      font-weight: 800;
-      letter-spacing: .06em;
-      line-height: 53.6px;
-      margin: 0 22px;
-      text-align: center;
-      text-transform: uppercase;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .main-title {
-      font-size: 24px;
-      font-weight: 700;
-      text-align: center;
-      text-transform: uppercase;
-    }
-
-    .main-title.lg {
-      font-size: 48px;
-    }
-
-    .blogs-view--title[data-v-4bbd7833] {
-      display: block;
-      padding: 60px 0;
-      text-align: left;
-    }
-
-    .blogs-list__main-blog {
-      margin-bottom: 50px;
-      max-height: 500px;
-      position: relative;
-    }
-
-    .blogs-list .blog-card {
-      background-color: #fff;
-      border-radius: 12px;
-      color: #111;
-      display: flex;
-      overflow: hidden;
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    .blogs-list__items {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      position: relative;
-    }
-
-    .blogs-list__items:after {
-      background-color: transparent;
-      bottom: 0;
-      content: "";
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: 0;
-      transition: all .4s ease;
-      visibility: hidden;
-    }
-
-    .blogs-list__items--pagination {
-      margin: 30px 0 100px;
-    }
-
-    .blogs-list .blog-card__texts {
-      display: flex;
-      flex-basis: 100%;
-      flex-direction: column;
-      justify-content: space-between;
-      max-height: 335px;
-      padding: 30px;
-      position: relative;
-      width: 100%;
-    }
-
-    .blogs-list__main-blog .blog-card__texts {
-      flex-basis: 55%;
-    }
-
-    .blogs-list .blog-card__image {
-      flex-basis: 100%;
-      overflow: hidden;
-    }
-
-    .blogs-list__main-blog .blog-card__image {
-      flex-basis: 45%;
-    }
-
-    .blogs-list__item {
-      flex-basis: 49%;
-      margin-bottom: 25px;
-    }
-
-    .pagination[data-v-70aa5032] {
-      box-sizing: border-box;
-      display: flex;
-      list-style: none;
-      margin: 0 auto;
-      padding-left: 0;
-      width: -moz-fit-content;
-      width: fit-content;
-    }
-
-    .blogs-list .blog-card__texts .text-title {
-      display: block;
-      font-size: 36px;
-      line-height: 1.1;
-      margin: 0;
-    }
-
-    .blogs-list .blog-card__texts .text-desc {
-      display: -webkit-box;
+    body {
+      font-family: "Gilroy", sans-serif;
       font-size: 16px;
-      line-height: 19px;
-      max-height: 150px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      -webkit-line-clamp: 8;
-      -webkit-box-orient: vertical;
-      margin: 18px 0;
-    }
-
-    .blogs-list .blog-card__texts .text-action {
-      color: #5a76ff;
-      cursor: pointer;
-      font-size: 14px;
-      line-height: 17px;
-      text-transform: uppercase;
-    }
-
-    .blogs-list .blog-card__texts .text-action:hover {
-      text-shadow: 0 0 13px #5a76ff;
-    }
-
-    img {
-      border-style: none;
-    }
-
-    .blogs-list .blog-card__image img {
-      display: block;
-      height: 100%;
-      -o-object-fit: contain;
-      object-fit: contain;
-      -o-object-position: center;
-      object-position: center;
-      width: 100%;
-    }
-
-    .pagination .arrow-left[data-v-70aa5032] {
-      display: flex;
-      height: 40px;
-      width: 40px;
-    }
-
-    .pagination .pages[data-v-70aa5032] {
-      align-items: center;
-      display: flex;
-    }
-
-    .pagination .arrow-right[data-v-70aa5032] {
-      display: flex;
-      height: 40px;
-      width: 40px;
-    }
-
-    .blogs-list .blog-card__texts .text-desc * {
-      font-size: 16px;
-      line-height: 19px;
-      white-space: normal;
-    }
-
-    .blogs-list .blog-card__texts .text-desc h2 {
-      font-size: 20px;
-      line-height: 1;
-    }
-
-    .blogs-list .blog-card__texts .text-desc h3 {
-      font-size: 16px;
-      line-height: 1;
-    }
-
-    .blogs-list__item.blog-card .text-action {
-      color: #111;
-    }
-
-    button {
-      font-family: inherit;
-      font-size: 100%;
-      line-height: 1.15;
-      margin: 0;
-    }
-
-    button {
-      overflow: visible;
-    }
-
-    button {
-      text-transform: none;
-    }
-
-    button {
-      -webkit-appearance: button;
-    }
-
-    button {
-      background: none;
-      border: none;
-      color: #fff;
-      cursor: pointer;
-      line-height: 1;
-      outline: none;
-    }
-
-    button {
-      font: inherit;
-    }
-
-    button {
-      color: inherit;
-      cursor: pointer;
-    }
-
-    button {
-      background-color: transparent;
-      border-style: none;
-    }
-
-    .pagination .page-link[data-v-70aa5032] {
-      align-items: center;
-      border-radius: 4px;
-      color: #fff;
-      display: flex;
-      font-size: 14px;
       font-weight: 400;
-      height: 40px;
-      justify-content: center;
-      line-height: 1;
-      margin: 0 15px;
-      padding: 2px;
-      position: relative;
-      width: 40px;
-    }
-
-    .pagination .arrow-left .disable[data-v-70aa5032] {
-      cursor: default;
-      pointer-events: none;
-    }
-
-    .pagination .arrow-left .page-link[data-v-70aa5032] {
-      align-items: center;
-      display: flex;
-      justify-content: center;
-      margin: 1px 15px;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
-    }
-
-    .pagination .page-link[data-v-70aa5032]:not(:disabled):not(.disabled) {
-      cursor: pointer;
-    }
-
-    .pagination .page-link.active[data-v-70aa5032] {
-      background-color: #fff;
-      border-radius: 4px;
-      color: #000;
-      cursor: inherit;
-    }
-
-    .pagination a.page-link[data-v-70aa5032] {
+      line-height: 1.5;
       color: #fff;
-      font-size: 12px;
+      background: linear-gradient(180deg, #4b4e55, #131313);
+      min-height: 100vh;
+    }
+
+    /* Gilroy Font Loading (local files - place in /fonts/) */
+    @font-face {
+      font-family: "Gilroy";
+      src: url("fonts/Gilroy-Light.ttf") format("truetype");
+      font-weight: 300;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Gilroy";
+      src: url("fonts/Gilroy-Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Gilroy";
+      src: url("fonts/Gilroy-Medium.ttf") format("truetype");
       font-weight: 500;
-      outline: none;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Gilroy";
+      src: url("fonts/Gilroy-SemiBold.ttf") format("truetype");
+      font-weight: 600;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Gilroy";
+      src: url("fonts/Gilroy-ExtraBold.ttf") format("truetype");
+      font-weight: 800;
+      font-style: normal;
     }
 
-    .pagination .arrow-right .page-link[data-v-70aa5032] {
-      align-items: center;
+    /* Container */
+    .k-container {
+      max-width: 1252px;
+      margin: 0 auto;
+      padding: 0 20px;
+      width: 100%;
+    }
+
+    /* Breadcrumbs / Back */
+    .breadcrumb {
+      padding: 20px 0;
+    }
+    .back-button {
+      color: #fff;
+      font-size: 18px;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    .back-button:hover {
+      text-decoration: underline;
+    }
+
+    /* Titles */
+    h1.main-title {
+      font-size: 48px;
+      font-weight: 800;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: linear-gradient(90deg, #fff 20%, #dde4ec 40%, #adc1d9 60%, #a6bcd6 80%, #5d87b9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0 0 40px;
+    }
+
+    /* Blog List */
+    .blogs-list {
+      padding: 40px 0;
+    }
+
+    .blogs-list__main-blog,
+    .blogs-list__item {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 30px;
+      transition: transform 0.3s ease;
+    }
+    .blogs-list__main-blog:hover,
+    .blogs-list__item:hover {
+      transform: translateY(-8px);
+    }
+
+    .blog-card {
       display: flex;
-      justify-content: center;
-      margin: 1px 15px;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
+      flex-direction: column;
     }
 
-    .pagination .arrow-left svg[data-v-70aa5032] {
-      fill: #fff;
+    @media (min-width: 768px) {
+      .blog-card {
+        flex-direction: row;
+      }
+      .blog-card__image {
+        flex: 0 0 45%;
+      }
+      .blog-card__texts {
+        flex: 1;
+      }
+      .blogs-list__item {
+        flex: 0 0 48%;
+      }
     }
 
-    .pagination .arrow-left .disable svg[data-v-70aa5032] {
-      fill: #736d7b;
-    }
-
-    .pagination .arrow-right svg[data-v-70aa5032] {
-      fill: #fff;
-    }
-
-    .blog-card__texts .text-title {
+    .blog-card__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
-      font-size: 36px !important;
-      line-height: 1.1;
-      margin: 0;
     }
-    .text-action{
-      margin-top: 1rem;
+
+    .blog-card__texts {
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
     }
-    .back-button{
-        margin-top: 3.5rem;
-        display: block;
+
+    .text-title {
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+
+    .text-desc {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #ddd;
+      margin-bottom: 20px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 6;
+      -webkit-box-orient: vertical;
+    }
+
+    .text-action {
+      color: #5a76ff;
+      font-size: 14px;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 600;
+      align-self: flex-start;
+    }
+    .text-action:hover {
+      text-shadow: 0 0 10px rgba(90, 118, 255, 0.7);
+    }
+
+    /* Pagination / Load More */
+    .load-more {
+      text-align: center;
+      margin: 60px 0 100px;
+    }
+    .load-more-btn {
+      background: #5a76ff;
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .load-more-btn:hover {
+      background: #4a66e6;
     }
   </style>
 </head>
-
 <body>
-    <?php include "../header.php" ?>
-  <main><!---->
-  
 
-    <div data-v-4bbd7833="">
-     
-      <section class="blogs-view" data-v-4bbd7833="">
-          
-        <div class="k-container" data-v-4bbd7833="">
-            <div class="breadcrumb">
-  <a href="/" class="back-button">← Back</a>
-  
-</div>
-          <h1 class="main-title lg blogs-view--title" data-v-4bbd7833="">Blog</h1>
-          <div class="blogs-view__content" data-v-4bbd7833="">
-            <div data-v-4bbd7833="" class="blogs-list">
-              <div class="blogs-list__content">
-                <div class="blogs-list__main-blog blog-card">
-                  <div class="blog-card__texts"><span class="text-title">REVOLUT in Ukraine: financial transactions in
-                      the system</span>
-                    <p class="text-desc">
-                     <p> REVOLUT in Ukraine: financial transactions in the system In the wake of changes in the principles
-                      of mutual settlements and the shift of the financial sector to the online space, users of
-                      different types of money began to search for an effective and convenient payment system. Revolut
-                      in Ukraine is the best option if you need a multifunctional platform for payments for various
-                      goods and services, making numerous payments to cards from different banks around the world.
-                      Introduction to REVOLUT: How does it work? Revolut is not an innovative product. Similar technical
-                      solutions for payment systems are available. However, it is Revolut that attracts millions of
-                      users around the world due to its unique and very extensive functionality, regularly updating the
-                      service with new options that allow you to save time and quickly make all planned payments...</p>
-                      <a href="/blogs/revolut-in-ukraine.html" class="text-action" style="color: #000000dc;">Read more</a>
-                  </div>
-                  <div class="blog-card__image"><img src="/blogs/img/1.jpg" src="/blogs/" alt="image" loading="lazy">
-                  </div>
-                </div>
-                <ul class="blogs-list__items">
-                  <li class="blogs-list__item blog-card">
-                    <div class="blog-card__texts"><span class="text-title">PAYPAL in Ukraine: how to accept and withdraw
-                        money?</span>
-                      <p class="text-desc">
-                      <p>
-                        Despite the fact that there are many financial organizations in Ukraine, not all are ready to
-                        offer such a wide range of services that you don’t have to look for additional tools and payment
-                        systems. For those who do not have enough basic options when opening bank accounts, an
-                        alternative option is offered - PAYPAL - this is an electronic payment system through which it
-                        is easy to make absolutely any international transfers.
+  <?php include "../header.php"; ?>
 
-                        PayPal is an American company created over 25 years ago. Today it is difficult to overestimate
-                        its popularity, since the services of this payment
-                      </p><a href="/blogs/paypal-in-ukraine.html" class="text-action">Read more</a>
-                    </div>
-                  </li>
-                  <li class="blogs-list__item blog-card">
-                    <div class="blog-card__texts"><span class="text-title">WISE payment system: money transfers</span>
-                      <p class="text-desc">
-                      <p>It is not always possible to immediately make the required payment, especially if you have to
-                        work in partnership with counterparties from other countries that have a different currency.
-                        Travelers and freelancers often face the problem of paying for various services and goods,
-                        because the conditions of banks where accounts have already been opened are not always
-                        acceptable due to double conversion and very large commissions. But there is already a solution
-                        to the problem - special payment systems that allow you to instantly and on favorable terms make
-                        any payments and</p>
-                      </p> <a href="/blogs/payment-system-wise.html" class="text-action">Read more</a>
-                    </div>
-                  </li>
-                  <li class="blogs-list__item blog-card">
-                    <div class="blog-card__texts"><span class="text-title">Payment of bills (invoices) in the USA. How
-                        to transfer money to the USA?</span>
-                      <p class="text-desc">
-                      <p>The need for international translation may arise in various situations. Today, the delivery of
-                        goods from America is developing very actively, as a result of which entrepreneurs and private
-                        individuals are looking for more profitable ways to transfer money from Ukraine to the USA
-                        cheaper. If a few years ago this was a task with an asterisk, today everything is much simpler.
-                        You can send money to the USA in just a few minutes,...</p>
-                      </p> <a href="/blogs/how-to-send-money-to-usa.html" class="text-action">Read more</a>
-                    </div>
-                  </li>
-                  <li class="blogs-list__item blog-card">
-                    <div class="blog-card__texts"><span class="text-title">Payment of bills (invoices) in China. How to
-                        send money to China?</span>
-                      <p class="text-desc">
-                      <p>The very dynamic development of Chinese companies, which offer a huge range of different goods
-                        on the world market, has naturally affected the growing popularity of working with suppliers
-                        from the Middle Kingdom in Ukraine. Today there are many functional applications through which
-                        you can order products of excellent quality at a much lower price than they are offered in our
-                        country. However...</p>
-                      </p> <a href="/blogs/how-to-send-money-to-china.html" class="text-action">Read more</a>
-                    </div>
-                  </li>
-                  <li class="blogs-list__item blog-card">
-                    <div class="blog-card__texts"><span class="text-title">Exchange cryptocurrencies for cash: how to do
-                        it safely?</span>
-                      <p class="text-desc">
-                      <p>The cryptocurrency niche is becoming increasingly interesting, as its spread around the world
-                        over the past few years has been noted as very dynamic. Digital currencies have turned out to be
-                        not only a convenient payment instrument. Using such an asset as an investment or trading tool,
-                        it becomes possible to significantly improve your financial situation, and in a short time. To
-                        implement such an idea, you need to figure out how to withdraw Bitcoin to a card, how to cash
-                        out Bitcoin in Ukraine for cash.</p>
-                      </p> <a href="/blogs/safely-exchange-crypto-to-cash.html" class="text-action">Read more</a>
-                    </div>
-                  </li>
-                  <li class="blogs-list__item blog-card">
-                    <div class="blog-card__texts"><span class="text-title">International money transfers via
-                        cryptocurrency. How can we help you?</span>
-                      <p class="text-desc">
-                      <p>Over the past few years, the global financial sector has undergone dramatic changes. First of
-                        all, this happened due to technological progress, as a result of which a huge number of
-                        practical and effective digital technologies appeared, most processes shifted to an online
-                        format. Secondly, due to the introduction of a fundamentally new financial system of
-                        cryptocurrencies.</p>
-                      </p> <a href="/blogs/international-money-transfer-in-crypto.html" class="text-action">Read more</a>
-                    </div>
-                  </li>
-                </ul>
-                <nav data-v-70aa5032="" aria-label="Page navigation example" class="blogs-list__items--pagination">
-                  <ul data-v-70aa5032="" class="pagination">
-                    <li data-v-70aa5032="" class="page-item arrow-left"><button data-v-70aa5032=""
-                        class="page-link disable" aria-label="page-link"><svg data-v-70aa5032="" width="10" height="16"
-                          viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path data-v-70aa5032="" d="M0.5 8L8 0.5L9.05 1.55L2.6 8L9.05 14.45L8 15.5L0.5 8Z"></path>
-                        </svg></button></li>
-                    <li data-v-70aa5032="" class="page-item pages"><span data-v-70aa5032=""
-                        class="page-link nuxt-link-exact-active nuxt-link-active active">1</span></li>
-                    <li data-v-70aa5032="" class="page-item pages"><a data-v-70aa5032="" href="#" class="page-link">
-                        2
-                      </a></li>
-                    <li data-v-70aa5032="" class="page-item arrow-right"><a data-v-70aa5032="" href="#"
-                        class="page-link" aria-label="arrow-right"><svg data-v-70aa5032="" width="10" height="16"
-                          viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path data-v-70aa5032="" d="M9.5 8L2 0.5L0.950001 1.55L7.4 8L0.950001 14.45L2 15.5L9.5 8Z">
-                          </path>
-                        </svg></a></li>
-                  </ul>
-                </nav>
+  <main>
+    <section class="blogs-view">
+      <div class="k-container">
+
+        <div class="breadcrumb">
+          <a href="/" class="back-button">← Back to Home</a>
+        </div>
+
+        <h1 class="main-title">Blog</h1>
+
+        <div class="blogs-list">
+          <!-- Main Featured Blog -->
+          <div class="blogs-list__main-blog blog-card">
+            <div class="blog-card__texts">
+              <span class="text-title">REVOLUT in Ukraine: financial transactions in the system</span>
+              <div class="text-desc">
+                In the wake of changes in the principles of mutual settlements and the shift of the financial sector to the online space, users of different types of money began to search for an effective and convenient payment system. Revolut in Ukraine is the best option if you need a multifunctional platform for payments...
               </div>
+              <a href="/blogs/revolut-in-ukraine.html" class="text-action">Read more →</a>
+            </div>
+            <div class="blog-card__image">
+              <img src="/blogs/img/1.jpg" alt="Revolut in Ukraine" loading="lazy"/>
             </div>
           </div>
+
+          <!-- Other Blogs (initially show first 4-6) -->
+          <div class="blogs-list__items">
+            <!-- Blog 1 -->
+            <div class="blogs-list__item blog-card">
+              <div class="blog-card__texts">
+                <span class="text-title">PAYPAL in Ukraine: how to accept and withdraw money?</span>
+                <div class="text-desc">
+                  Despite the fact that there are many financial organizations in Ukraine, not all are ready to offer such a wide range of services...
+                </div>
+                <a href="/blogs/paypal-in-ukraine.html" class="text-action">Read more →</a>
+              </div>
+            </div>
+
+            <!-- Blog 2 -->
+            <div class="blogs-list__item blog-card">
+              <div class="blog-card__texts">
+                <span class="text-title">WISE payment system: money transfers</span>
+                <div class="text-desc">
+                  It is not always possible to immediately make the required payment, especially if you have to work in partnership with counterparties...
+                </div>
+                <a href="/blogs/payment-system-wise.html" class="text-action">Read more →</a>
+              </div>
+            </div>
+
+            <!-- Add remaining blogs similarly... -->
+            <!-- You can add more <div class="blogs-list__item blog-card"> blocks here -->
+
+          </div>
+
+          <!-- Load More Button instead of broken pagination -->
+          <div class="load-more">
+            <button class="load-more-btn">Load More Blogs</button>
+          </div>
         </div>
-      </section>
-    </div>
+
+      </div>
+    </section>
   </main>
-  <script>$(document).ready(function () {
-      // Show only the first 4 blog cards on page load
-      $(".blogs-list__item.blog-card").hide().slice(0, 4).show();
 
-      // When clicking on the pagination button
-      $(".page-item.pages a").on("click", function (e) {
-        e.preventDefault(); // Prevent default anchor behavior
-
-        // Show the remaining blog cards
-        $(".blogs-list__item.blog-card:hidden").fadeIn();
-      });
-    });
-  </script>
-  <!-- <script>
+  <script>
     $(document).ready(function () {
-      $('.blog-card__texts').each(function () {
-        let words = $(this).text().trim().split(/\s+/); // Split text into words
-        if (words.length > 100) {
-          let truncatedText = words.slice(0, 180).join(" ") + "...";
-          $(this).text(truncatedText);
+      // Initially hide blogs after the first 4 items (adjust number as needed)
+      $(".blogs-list__items .blog-card").slice(4).hide();
+
+      // Load More on click
+      $(".load-more-btn").on("click", function () {
+        // Show next 4 hidden items (or all remaining)
+        $(".blogs-list__items .blog-card:hidden").slice(0, 4).fadeIn(400);
+
+        // Hide button if no more hidden items
+        if ($(".blogs-list__items .blog-card:hidden").length === 0) {
+          $(".load-more").fadeOut();
         }
       });
     });
+  </script>
 
-  </script> -->
 </body>
-
 </html>
