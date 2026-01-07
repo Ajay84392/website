@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Blog | Your Site Name</title>
-
-  <!-- jQuery (use CDN - more reliable) -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <title>Home | Your Medical & Treatment Center</title>
+  
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+          integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+          crossorigin="anonymous"></script>
 
   <style>
     /* Reset & Base */
@@ -15,23 +17,21 @@
       padding: 0;
       box-sizing: border-box;
     }
-
     html {
       font-size: 16px;
       overflow-x: hidden;
     }
-
     body {
       font-family: "Gilroy", sans-serif;
       font-size: 16px;
       font-weight: 400;
-      line-height: 1.5;
+      line-height: 1.6;
       color: #fff;
       background: linear-gradient(180deg, #4b4e55, #131313);
       min-height: 100vh;
     }
 
-    /* Gilroy Font Loading (local files - place in /fonts/) */
+    /* Gilroy Font Loading (place fonts in /fonts/) */
     @font-face {
       font-family: "Gilroy";
       src: url("fonts/Gilroy-Light.ttf") format("truetype");
@@ -71,221 +71,264 @@
       width: 100%;
     }
 
-    /* Breadcrumbs / Back */
-    .breadcrumb {
+    /* Header / Navigation */
+    header {
       padding: 20px 0;
-    }
-    .back-button {
-      color: #fff;
-      font-size: 18px;
-      text-decoration: none;
-      display: inline-block;
-      margin-bottom: 20px;
-    }
-    .back-button:hover {
-      text-decoration: underline;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      position: sticky;
+      top: 0;
+      background: rgba(19,19,19,0.85);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
     }
 
-    /* Titles */
-    h1.main-title {
-      font-size: 48px;
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 28px;
       font-weight: 800;
+      background: linear-gradient(90deg, #5d87b9, #a6bcd6, #dde4ec);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 32px;
+    }
+
+    nav a {
+      color: #ddd;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 17px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #8ca8ff;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 140px 0 100px;
       text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
+    }
+
+    .hero-title {
+      font-size: 64px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 24px;
       background: linear-gradient(90deg, #fff 20%, #dde4ec 40%, #adc1d9 60%, #a6bcd6 80%, #5d87b9);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin: 0 0 40px;
     }
 
-    /* Blog List */
-    .blogs-list {
-      padding: 40px 0;
+    .hero-subtitle {
+      font-size: 22px;
+      color: #ccc;
+      max-width: 780px;
+      margin: 0 auto 40px;
     }
 
-    .blogs-list__main-blog,
-    .blogs-list__item {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      overflow: hidden;
-      margin-bottom: 30px;
-      transition: transform 0.3s ease;
-    }
-    .blogs-list__main-blog:hover,
-    .blogs-list__item:hover {
-      transform: translateY(-8px);
-    }
-
-    .blog-card {
+    .cta-buttons {
       display: flex;
-      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
     }
 
-    @media (min-width: 768px) {
-      .blog-card {
-        flex-direction: row;
-      }
-      .blog-card__image {
-        flex: 0 0 45%;
-      }
-      .blog-card__texts {
-        flex: 1;
-      }
-      .blogs-list__item {
-        flex: 0 0 48%;
-      }
-    }
-
-    .blog-card__image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .blog-card__texts {
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .text-title {
-      font-size: 28px;
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 16px;
-      color: #fff;
-    }
-
-    .text-desc {
-      font-size: 16px;
-      line-height: 1.5;
-      color: #ddd;
-      margin-bottom: 20px;
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-line-clamp: 6;
-      -webkit-box-orient: vertical;
-    }
-
-    .text-action {
-      color: #5a76ff;
-      font-size: 14px;
-      text-transform: uppercase;
-      text-decoration: none;
+    .btn {
+      padding: 16px 36px;
+      font-size: 17px;
       font-weight: 600;
-      align-self: flex-start;
-    }
-    .text-action:hover {
-      text-shadow: 0 0 10px rgba(90, 118, 255, 0.7);
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.3s;
     }
 
-    /* Pagination / Load More */
-    .load-more {
-      text-align: center;
-      margin: 60px 0 100px;
-    }
-    .load-more-btn {
+    .btn-primary {
       background: #5a76ff;
       color: white;
       border: none;
-      padding: 14px 32px;
-      font-size: 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s;
     }
-    .load-more-btn:hover {
+
+    .btn-primary:hover {
       background: #4a66e6;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 2px solid #5a76ff;
+      color: #5a76ff;
+    }
+
+    .btn-outline:hover {
+      background: rgba(90, 118, 255, 0.1);
+    }
+
+    /* Features / Services */
+    .services {
+      padding: 80px 0;
+      background: rgba(0,0,0,0.2);
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 60px;
+      background: linear-gradient(90deg, #fff, #a6bcd6, #5d87b9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .service-card {
+      background: rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 40px 30px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .service-card h3 {
+      font-size: 26px;
+      margin: 20px 0 16px;
+      color: #a6bcd6;
+    }
+
+    .service-card p {
+      color: #bbb;
+    }
+
+    /* Footer */
+    footer {
+      padding: 80px 0 40px;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    footer p {
+      color: #888;
+      font-size: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 48px; }
+      .hero-subtitle { font-size: 18px; }
+      nav ul { gap: 20px; flex-wrap: wrap; justify-content: center; }
     }
   </style>
 </head>
 <body>
 
-  <?php include "../header.php"; ?>
+  <!-- Header with Navigation -->
+  <header>
+    <div class="k-container nav-container">
+      <a href="index.html" class="logo">MedElite</a>
+      
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="doctor.html">Doctors</a></li>
+          <li><a href="hospital.html">Hospitals</a></li>
+          <li><a href="treatment.html">Treatments</a></li>
+          <li><a href="test.html">Diagnostics</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
   <main>
-    <section class="blogs-view">
+
+    <!-- Hero Section -->
+    <section class="hero">
       <div class="k-container">
-
-        <div class="breadcrumb">
-          <a href="/" class="back-button">← Back to Home</a>
+        <h1 class="hero-title">Advanced Medical Care<br>You Can Trust</h1>
+        <p class="hero-subtitle">
+          World-class doctors, modern hospitals, accurate diagnostics and effective treatments — all in one place.
+        </p>
+        <div class="cta-buttons">
+          <a href="treatment.html" class="btn btn-primary">Find Treatment</a>
+          <a href="contact.html" class="btn btn-outline">Contact Us</a>
         </div>
-
-        <h1 class="main-title">Blog</h1>
-
-        <div class="blogs-list">
-          <!-- Main Featured Blog -->
-          <div class="blogs-list__main-blog blog-card">
-            <div class="blog-card__texts">
-              <span class="text-title">REVOLUT in Ukraine: financial transactions in the system</span>
-              <div class="text-desc">
-                In the wake of changes in the principles of mutual settlements and the shift of the financial sector to the online space, users of different types of money began to search for an effective and convenient payment system. Revolut in Ukraine is the best option if you need a multifunctional platform for payments...
-              </div>
-              <a href="/blogs/revolut-in-ukraine.html" class="text-action">Read more →</a>
-            </div>
-            <div class="blog-card__image">
-              <img src="/blogs/img/1.jpg" alt="Revolut in Ukraine" loading="lazy"/>
-            </div>
-          </div>
-
-          <!-- Other Blogs (initially show first 4-6) -->
-          <div class="blogs-list__items">
-            <!-- Blog 1 -->
-            <div class="blogs-list__item blog-card">
-              <div class="blog-card__texts">
-                <span class="text-title">PAYPAL in Ukraine: how to accept and withdraw money?</span>
-                <div class="text-desc">
-                  Despite the fact that there are many financial organizations in Ukraine, not all are ready to offer such a wide range of services...
-                </div>
-                <a href="/blogs/paypal-in-ukraine.html" class="text-action">Read more →</a>
-              </div>
-            </div>
-
-            <!-- Blog 2 -->
-            <div class="blogs-list__item blog-card">
-              <div class="blog-card__texts">
-                <span class="text-title">WISE payment system: money transfers</span>
-                <div class="text-desc">
-                  It is not always possible to immediately make the required payment, especially if you have to work in partnership with counterparties...
-                </div>
-                <a href="/blogs/payment-system-wise.html" class="text-action">Read more →</a>
-              </div>
-            </div>
-
-            <!-- Add remaining blogs similarly... -->
-            <!-- You can add more <div class="blogs-list__item blog-card"> blocks here -->
-
-          </div>
-
-          <!-- Load More Button instead of broken pagination -->
-          <div class="load-more">
-            <button class="load-more-btn">Load More Blogs</button>
-          </div>
-        </div>
-
       </div>
     </section>
+
+    <!-- Services / Features -->
+    <section class="services">
+      <div class="k-container">
+        <h2 class="section-title">Our Main Directions</h2>
+        
+        <div class="services-grid">
+          <div class="service-card">
+            <h3>Cardiology</h3>
+            <p>Diagnosis and treatment of heart diseases, coronary angiography, stenting, heart surgery.</p>
+          </div>
+          
+          <div class="service-card">
+            <h3>Oncology</h3>
+            <p>Modern cancer treatment: chemotherapy, immunotherapy, targeted therapy, radiation.</p>
+          </div>
+          
+          <div class="service-card">
+            <h3>Neurology & Neurosurgery</h3>
+            <p>Treatment of stroke, epilepsy, Parkinson's, brain and spine surgery.</p>
+          </div>
+          
+          <div class="service-card">
+            <h3>Orthopedics & Traumatology</h3>
+            <p>Joint replacement, arthroscopy, spine surgery, sports injuries treatment.</p>
+          </div>
+          
+          <div class="service-card">
+            <h3>Reproductology & IVF</h3>
+            <p>Full cycle of infertility treatment, IVF, egg donation, surrogacy programs.</p>
+          </div>
+          
+          <div class="service-card">
+            <h3>Check-up & Diagnostics</h3>
+            <p>Comprehensive examination of the body in 1–3 days with the best equipment.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <script>
-    $(document).ready(function () {
-      // Initially hide blogs after the first 4 items (adjust number as needed)
-      $(".blogs-list__items .blog-card").slice(4).hide();
-
-      // Load More on click
-      $(".load-more-btn").on("click", function () {
-        // Show next 4 hidden items (or all remaining)
-        $(".blogs-list__items .blog-card:hidden").slice(0, 4).fadeIn(400);
-
-        // Hide button if no more hidden items
-        if ($(".blogs-list__items .blog-card:hidden").length === 0) {
-          $(".load-more").fadeOut();
-        }
-      });
-    });
-  </script>
+  <!-- Footer -->
+  <footer>
+    <div class="k-container">
+      <p>© 2025–2026 MedElite International. All rights reserved.</p>
+      <p style="margin-top: 12px; font-size: 14px;">
+        <a href="contact.html" style="color:#8ca8ff; margin:0 12px;">Contact</a> • 
+        <a href="about.html" style="color:#8ca8ff; margin:0 12px;">About Us</a> • 
+        <a href="blog.html" style="color:#8ca8ff; margin:0 12px;">Blog</a> • 
+        <a href="#" style="color:#8ca8ff; margin:0 12px;">Privacy Policy</a>
+      </p>
+    </div>
+  </footer>
 
 </body>
 </html>
